@@ -1,6 +1,5 @@
-CREATE TABLE `users` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `username` varchar(45) NOT NULL,
- `email` varchar(100) DEFAULT NULL,
- PRIMARY KEY (`id`)
-)
+CREATE TABLE users (
+   id SERIAL PRIMARY KEY,
+   username VARCHAR(255) NOT NULL,
+   email VARCHAR(255)
+);

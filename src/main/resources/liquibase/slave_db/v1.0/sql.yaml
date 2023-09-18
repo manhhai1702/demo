@@ -1,9 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: V1.0.202309160717
-      author: hainm
-      changes:
-        - sqlFile:
-            relativeToChangelogFile: true
-            encoding: utf-8
-            path: update/V1.0.202309160717_create_user_table.sql

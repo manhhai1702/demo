@@ -29,6 +29,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.liquibase:liquibase-core'
 
+	implementation 'org.postgresql:postgresql:42.6.0'
+
 	implementation 'org.hibernate:hibernate-core:6.3.0.Final'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 
