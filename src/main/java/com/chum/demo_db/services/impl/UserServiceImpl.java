@@ -2,8 +2,7 @@ package com.chum.demo_db.services.impl;
 
 import com.chum.demo_db.domains.dtos.UserDto;
 import com.chum.demo_db.domains.entities.UserEntity;
-import com.chum.demo_db.repositories.master.UserMasterWriteRepository;
-import com.chum.demo_db.repositories.slave.UserSlaveReadRepository;
+import com.chum.demo_db.repositories.UserRepository;
 import com.chum.demo_db.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +14,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMasterWriteRepository userMasterWriteRepository;
-
-    @Autowired
-    private UserSlaveReadRepository userSlaveReadRepository;
+    UserRepository userRepository;
 
     @Override
     @Transactional(transactionManager = "masterTransactionManager")
@@ -26,12 +22,12 @@ public class UserServiceImpl implements UserService {
         UserEntity userSave = new UserEntity();
         userSave.setUsername(userDto.getUsername());
         userSave.setEmail(userDto.getEmail());
-        return userMasterWriteRepository.save(userSave);
+        return userRepository.save(userSave);
     }
 
     @Override
     @Transactional(transactionManager = "slaveTransactionManager", readOnly = true)
     public List<UserEntity> getAllUsers() {
-        return userSlaveReadRepository.findAll();
+        return userRepository.findAll();
     }
 }

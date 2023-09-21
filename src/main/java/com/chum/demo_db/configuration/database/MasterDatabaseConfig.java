@@ -24,7 +24,7 @@ import java.util.HashMap;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.chum.demo_db.repositories.master",
+        basePackages = "com.chum.demo_db.repositories",
         entityManagerFactoryRef = "masterEntityManagerFactory",
         transactionManagerRef = "masterTransactionManager"
 )
@@ -63,7 +63,7 @@ public class MasterDatabaseConfig {
                 .build();
     }
 
-    @Primary
+
     @Bean(name = "masterTransactionManager")
     public PlatformTransactionManager transactionManager(
             @Qualifier("masterEntityManagerFactory") EntityManagerFactory entityManagerFactory) {

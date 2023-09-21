@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.chum.demo_db.repositories.slave",
+        basePackages = "com.chum.demo_db.repositories",
         entityManagerFactoryRef = "slaveEntityManagerFactory",
         transactionManagerRef = "slaveTransactionManager"
 )
@@ -54,7 +54,7 @@ public class SlaveDatabaseConfig {
                 .build();
     }
 
-    @Primary
+
     @Bean(name = "slaveTransactionManager")
     public PlatformTransactionManager transactionManager(
             @Qualifier("slaveEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
